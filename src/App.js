@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
 
+import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="#home">
+          Aplicacion de Paises
+        </Navbar.Brand>
+      </Navbar>
+      <Container className="mt-3" >
+        <Row>
+          <Col xs={12} lg={12} md={12}>
+            <Card>
+              <Card.Header>Buscador</Card.Header>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
