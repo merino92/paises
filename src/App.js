@@ -20,8 +20,10 @@ class App extends Component{
     this.state={
       paises:[]
     }
+    this.region=['Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
     this.listarPaises= this.listarPaises.bind(this)
     this.busqueda=this.busqueda.bind(this)
+    this.getRegion=this.getRegion.bind(this)
   }
    async listarPaises(ruta){
     let url=url_api+ruta;
@@ -40,6 +42,11 @@ class App extends Component{
       }else{
         this.listarPaises("rest/v2/regionalbloc/cais")
       }
+    } 
+    getRegion(e){
+      var region=e.target.value
+      let filtro="rest/v2/region/"+region.toLowerCase()
+      this.listarPaises(filtro)
     }
 
   componentDidMount(){
@@ -52,10 +59,12 @@ class App extends Component{
   render(){
     
     const datos=this.state.paises.map((item,i)=>{
-     
+   
       return <Carta data={item} key={i} />
     })
- 
+    const region=this.region.map((item,i)=>{
+    return <option key={i} value={item}>{item}</option>
+    })
     return (
       <div>
         <Navbar bg="dark" variant="dark">
@@ -78,7 +87,14 @@ class App extends Component{
                         <Form.Control type="search" placeholder="Buscador de Paises" onChange={this.busqueda} />
                       </Form.Group>
                     </Col>
-                    <Col xs={12} lg={6} md={6} sm="12"></Col>
+                    <Col xs={12} lg={6} md={6} sm="12">
+                      <Form.Group>
+                        <Form.Label>Region</Form.Label>
+                        <Form.Control as="select" onChange={this.getRegion}>
+                         {region}
+                        </Form.Control>
+                      </Form.Group>
+                    </Col>
                   </Row>
                 </Card.Body>
                 
