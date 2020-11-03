@@ -12,6 +12,7 @@ import Carta from './Carta';
 
 const url_api="https://restcountries.eu/";
 
+// Buen trabajo :-)
 
 class App extends Component{
   
